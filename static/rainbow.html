@@ -1,0 +1,35 @@
+<html>
+<style>
+div {
+    height:7px;
+    opacity:0.2;
+}
+body {
+    margin:0px;
+    background-image:url(http://placekitten.com/g/140/200); 
+}
+</style>
+<body>
+    <script>
+    var htmlDivs = [];
+    var colors = [];
+    var n = 150;
+ 
+    for(var i = 0; i <n; i++) {
+        var color = 'hsla(' + Math.floor(((i+1)/n)*360) + ',90%,60%,1)';
+        colors.push(color);
+        htmlDivs.push('<div style="background-color:' + color + ';"></div>');
+    }
+ 
+    document.getElementsByTagName("body")[0].innerHTML = htmlDivs.join("");
+    var divs = document.getElementsByTagName("div");
+ 
+    setInterval(function(){
+        colors.push(colors.shift());
+        for (var i = 0, len = colors.length; i < len; i++) {
+            divs[i].style.backgroundColor = colors[i];
+        }
+    }, 50);
+    </script>
+</body>
+</html>

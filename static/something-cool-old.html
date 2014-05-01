@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=3.0, user-scalable=no">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+    <title>Something Cool</title>
+    <style>
+        #main-div {
+            width:1400px;
+        }
+        #main-div div {
+            width:10px;
+            height:15px;
+            display: block;
+            float: left;
+            background-color:white;
+        }
+        body {
+            margin:0px;
+        }
+    </style>
+</head>
+<body>
+<div id="main-div">
+
+</div>
+    <script>
+    var i = 0;
+    var j = 0;
+    var len = 0;
+    var mainDiv = document.getElementById("main-div");
+    var newDiv = null;
+    var colorIndex = 0;
+    var getNewColor = function() {
+        colorIndex = (colorIndex+1)%360
+        return 'hsla(' + (colorIndex) + ',90%,60%,1)';
+    };
+
+    var waterFallList = [];
+    var newWaterfall = [];
+    setInterval(function(){
+        if (waterFallList.length === 0)
+            return;
+        newWaterfall = [];
+        for (i = 0, len = waterFallList.length; i < len; i++) {
+            if (waterFallList[i].nextEl) {
+                waterFallList[i].nextEl.style.backgroundColor = waterFallList[i].style.backgroundColor;
+                newWaterfall.push(waterFallList[i].nextEl);
+            }
+        }
+        waterFallList = newWaterfall;
+    }, 16);
+
+
+
+    var onMouseOver = function(e) {
+        var element = document.elementFromPoint(e.pageX, e.pageY)
+        element.style.backgroundColor = getNewColor();
+        waterFallList.push(element);
+        e.preventDefault();
+    };
+
+    var width = 1400/10;
+    var numberRows = 55;
+    var domArray = [];
+
+    for (j = 0; j <numberRows; j++) {
+        domArray[j] = [];
+        for (i = 0; i <width; i++) {
+            newDiv = document.createElement('div');
+            newDiv.addEventListener("mousemove", onMouseOver, false);
+            newDiv.addEventListener("touchmove", onMouseOver, false);
+            if (j !== 0) {
+                newDiv.nextEl = domArray[j-1][i];
+            } else {
+                newDiv.nextEl = null;
+            }
+            domArray[j].push(newDiv);
+            mainDiv.appendChild(newDiv);
+        }
+    }
+    delete domArray;
+
+    </script>
+</body>
+</html>

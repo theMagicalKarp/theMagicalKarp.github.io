@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <title>Something Cool</title>
+    <style>
+        body {
+            margin:0px;
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+
+<script>
+var colorIndex = 0;
+var getNewColor = function() {
+    colorIndex = (colorIndex+1)%360
+    return 'hsla(' + (colorIndex) + ',90%,60%,1)';
+};
+
+var mouse = {};
+var points = [];
+var onMouseMove = function(e) {
+    mouse = {
+        color: getNewColor()
+    };
+
+    if (e.touches && e.touches.length > 0) {
+        mouse.x = e.touches[0].pageX;
+        mouse.y = e.touches[0].pageY;
+    } else {
+        mouse.x = e.pageX;
+        mouse.y = e.pageY;
+    }
+
+    points.push(mouse);
+    e.preventDefault();
+};
+
+
+var canvas = document.getElementById('myCanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var onWindowResize = function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+};
+
+
+window.addEventListener('resize', onWindowResize, false);
+canvas.addEventListener('mousemove', onMouseMove, false);
+canvas.addEventListener('touchmove', onMouseMove, false);
+
+var ctx = canvas.getContext('2d');
+
+var w = 14;
+var halfW = w/2;
+
+var h = 25;
+var i = 0;
+var len = 0;
+setInterval(function(){
+    len = points.length;
+    for (i=0; i < len; i++) {
+        if (points[i].y > 0) {
+            ctx.fillStyle = points[i].color;
+            ctx.fillRect(points[i].x-halfW, points[i].y-h, w, h);
+            points[i].y = points[i].y - h;
+        } else {
+            points.splice(i, 1);
+        }
+    }
+}, 20);
+
+</script>
+</body>
+</html>

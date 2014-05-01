@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no">
+
+    <title>Lazers</title>
+    <style>
+    body {
+        margin:0px;
+        background-color: #000000;
+    }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+    <script>
+    var colorGenerator = function(colorIndex) {
+        return function() {
+            if (colorIndex === undefined)
+                colorIndex = 0;
+            colorIndex = (colorIndex+1)%360
+            return 'hsla(' + (colorIndex) + ',80%,70%,1)';
+        };
+    };
+    var getNewColor = colorGenerator();
+
+    var lineDistance = function (point1, point2) {
+        var xs = 0;
+        var ys = 0;
+        xs = point2.x - point1.x;
+        xs = xs * xs;
+        ys = point2.y - point1.y;
+        ys = ys * ys;
+        return Math.sqrt( xs + ys );
+    };
+
+    var points = [];
+    var onMouseMove = function(e) {
+        e.preventDefault();
+
+        if (e.touches && e.touches.length >= 1) {
+            var touch = e.touches[0];
+            newPoints = {
+                x: touch.pageX,
+                y: touch.pageY,
+                color: getNewColor()
+            };
+        } else {
+            newPoints = {
+                x: e.pageX,
+                y: e.pageY,
+                color: getNewColor()
+            };
+        }
+
+
+        var len = points.length;
+        if (points.length > 1 && lineDistance(newPoints, points[len-1])<75)
+            return;
+
+        points.push(newPoints);
+        while (points.length > 5)
+            points.shift();
+
+        for (var i = 0; i <len-1; i++) {
+            ctx.strokeStyle = points[i].color;
+
+            ctx.beginPath();
+            ctx.lineTo(canvas.width - points[i].x, canvas.height- points[i].y);
+            ctx.lineTo(canvas.width - points[len-1].x, canvas.height-points[len-1].y);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.beginPath();
+            ctx.lineTo(points[i].x, points[i].y);
+            ctx.lineTo(points[len-1].x, points[len-1].y);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+    };
+    var canvas = document.getElementById('myCanvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var hypotenuse = Math.sqrt(canvas.height*canvas.height+canvas.width*canvas.width)/4;
+    canvas.addEventListener('mousemove', onMouseMove, false);
+    canvas.addEventListener('touchmove', onMouseMove, false);
+
+    var ctx = canvas.getContext('2d');
+    ctx.lineWidth=1;
+
+    ctx.fillStyle='black';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    setInterval(function() {
+        ctx.fillStyle='rgba(0,0,0,.05)';
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+    }, 50);
+
+    </script>
+</body>
+</html>

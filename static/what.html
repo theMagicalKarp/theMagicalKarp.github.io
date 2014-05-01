@@ -1,0 +1,196 @@
+<html>
+<head>
+    <style type="text/css">
+    body { 
+        overflow:hidden;
+        margin: 0;
+        padding: 0;
+        /*background-repeat:no-repeat;*/
+        /*background-size: cover;*/
+        /*background-size: contain;*/
+        background-position:center;
+    }
+
+    html, body, #wrapper {
+       height:100%;
+       width: 100%;
+       margin: 0;
+       padding: 0;
+       border: 0;
+    }
+    #wrapper td {
+       vertical-align: middle;
+       text-align: center;
+    }
+
+    </style>
+</head>
+<body>
+<!-- <iframe width="0" height="0" src="http://www.youtube.com/embed/c3fZ8LXNs_E?autoplay=1&cc_load_policy=1" frameborder="0" allowfullscreen></iframe> -->
+<!-- <iframe width="0" height="0" src="http://www.youtube.com/embed/sCr5CkTHcjk?start=21&autoplay=1&cc_load_policy=1" frameborder="0" allowfullscreen></iframe> -->
+    <iframe width="0" height="0" src="http://www.youtube.com/embed/I2dfGC1oziE?autoplay=1&loop=1&cc_load_policy=1" frameborder="0" allowfullscreen></iframe>
+    <table id="wrapper" >
+      <tr>
+         <td>
+            <img src="" id="main-image"></img>
+         </td>
+      </tr>
+   </table>
+<canvas id="myCanvas" ></canvas>
+</body>
+<script>
+    var images = [
+        'http://i.imgur.com/FlhE3.gif',
+        'http://25.media.tumblr.com/tumblr_mdk4xmfAmJ1qgos7ro1_1280.gif',
+        'http://i.imgur.com/TlDDrzr.gif',
+        'http://i.imgur.com/bpN2JNq.gif',
+        'http://i.imgur.com/hGpZkam.gif',
+        'http://i.imgur.com/UO7tulf.jpg',
+        'http://i.imgur.com/Jx68kuv.gif',
+        'http://media.heavy.com/media/2013/05/star.gif',
+        'http://31.media.tumblr.com/tumblr_lez3h8cZn11qayvrmo1_500.gif',
+        'http://assets0.ordienetworks.com/misc/Bill%20Murray%20SNL%20Laugh.gif',
+        'http://24.media.tumblr.com/16a98ae27367593d459898304ba1c5af/tumblr_mqfjpgh2681qaru4bo1_400.gif',
+        'http://i.imgur.com/tdXoXxf.gif',
+        'http://i.imgur.com/2CHAEpH.gif',
+        'http://i.imgur.com/9ABCT6t.jpg',
+        'http://i.imgur.com/PSmc5BS.jpg',
+        'http://i.imgur.com/TOGQdGk.gif',
+        'http://i.imgur.com/vYxQFkS.gif',
+        'http://i.imgur.com/fHYKhnk.gif',
+        'http://giant.gfycat.com/DownrightDelayedAmericanwarmblood.gif',
+        'http://i.imgur.com/gYPpsF2.gif',
+        'http://i.imgur.com/afBTAMJ.gif',
+        'http://i.imgur.com/djztOas.gif',
+        'http://i.imgur.com/lGsr2mk.gif',
+        'http://i.imgur.com/tUFndBB.gif',
+        'http://i.imgur.com/z1dEO.jpg',
+        'http://i.imgur.com/G4EW4PW.gif',
+        'http://i.imgur.com/l5NFYS6.jpg',
+        'http://31.media.tumblr.com/3ec01a6c1d8fe4d4265f3abde8449bb0/tumblr_mqaso5jmDk1rjk7hdo1_400.gif',
+        'http://i.imgur.com/c19Ft5e.gif',
+        'http://i.imgur.com/sXYvriZ.gif',
+        'http://www.geek.com/wp-content/uploads/2013/10/52.gif',
+        'http://31.media.tumblr.com/e6612818adae07326629a483b4ce20e3/tumblr_mvyauvekX41sgdp89o1_500.gif',
+        'http://i.imgur.com/0V2sB.gif',
+        'http://i.imgur.com/kpyJ9Ew.gif',
+        'http://i.imgur.com/Z7FpC.gif',
+        'http://24.media.tumblr.com/51ffecaedffadecaa8748c3fcf3d618e/tumblr_mjh5hdnyOv1rk1qp5o1_500.gif',
+        'http://i.imgur.com/eLV2A.png',
+        'http://i.imgur.com/u4q31Vv.gif',
+        'http://i.imgur.com/omgp4Xq.gif',
+        'http://i.minus.com/ibnBdWuggWO0bV.gif',
+        'http://i.imgur.com/O9rT5t8.gif',
+        'http://i.imgur.com/GLMdxMb.gif',
+        'http://i.imgur.com/I3uOpWB.gif',
+        'http://i.imgur.com/cANkqUS.jpg',
+        'http://i.imgur.com/Dx5NfAE.gif',
+        'http://i.imgur.com/9xQ2oI1.gif',
+        'http://i.imgur.com/joz3pKU.gif',
+        'http://i.imgur.com/cAInLPI.gif',
+        'http://25.media.tumblr.com/9a64bb3150fcad66f501491225208a74/tumblr_mhr2scufMy1rmyzuqo2_r1_500.gif',
+        'http://i.imgur.com/CCDduR6.gif',
+        'http://i.imgur.com/1pJ5xLK.gif',
+        'http://i.imgur.com/0YKxXkx.gif',
+        'http://i.imgur.com/Zlto5Hv.gif',
+        'http://i.imgur.com/o8Zidve.gif',
+        'http://i.imgur.com/rQNe1no.gif',
+        'http://i.imgur.com/4Ngb7Yr.gif',
+        'http://i.imgur.com/J4dvVCP.gif',
+        'http://i.imgur.com/cL37SYw.gif',
+        'http://i.imgur.com/NCfuSRg.gif',
+        'http://i.imgur.com/UinidgX.gif',
+        'http://i.imgur.com/S7mGBtm.gif',
+        'http://25.media.tumblr.com/aec14772b82edad57bdcd887645c8a46/tumblr_mqbriaMCHR1r6j7rho1_500.gif',
+        'http://i.imgur.com/HrIXukk.gif',
+        'http://i.imgur.com/dCIp7.gif',
+        'http://i.imgur.com/EF2U3SV.gif',
+        'http://i.imgur.com/8eBOW.jpg',
+        'http://i.imgur.com/JdAM0pf.gif',
+        'http://i.imgur.com/QDpLVxj.gif',
+        'http://31.media.tumblr.com/890dbb3579d662c3f85d63b092a01498/tumblr_msjepeJzfg1ru39xmo1_500.gif',
+        'http://i.minus.com/irY9VS3qrHQVe.gif',
+
+        'http://i.imgur.com/P3743d9.gif',
+        'http://i.imgur.com/rSjZKt8.gif?1',
+        'http://i.imgur.com/ZOOH5.gif',
+        'http://i.imgur.com/ozR1ill.gif',
+        'http://fuskbugg.se/file/CN1YTt/pron-480.gif',
+        'https://lh4.googleusercontent.com/-eRGol6Wx3Es/UejNabfQp2I/AAAAAAACBkA/9UIb_I_6SB0/w983-h553-no/Cinemagraph1.gif',
+        'http://i.imgur.com/UkCXdIp.gif',
+        'http://i.imgur.com/YDx1gh4.gif',
+        'http://i.imgur.com/6NKL7iU.gif',
+        'http://i.imgur.com/Ow64o.gif',
+        'http://i.imgur.com/3215cY2.gif',
+        'http://25.media.tumblr.com/868dfac2d6db2d67a89e14e94a31a9af/tumblr_mlrtg1sJSY1sp4psxo1_500.gif',
+        'http://i.imgur.com/3CuYfSH.gif',
+        'http://i.imgur.com/Flvljac.jpg',
+        'http://i.imgur.com/q9FAYlA.gif',
+        'http://johnlok.me/wp-content/uploads/2013/03/HongKongRainyCar.gif',
+        'http://i.imgur.com/NxnDZ1n.gif',
+        'http://i.minus.com/ibhwZcRDlyU6LG.gif',
+        'http://i.imgur.com/oxlvb.gif',
+        'http://i.imgur.com/9ZOjH.gif',
+        'http://i.imgur.com/amyBT0j.gif',
+        'http://i.imgur.com/4FO3nzu.jpg',
+        'http://i.minus.com/ixSb8AZv6Zf1T.gif',
+        'http://i.imgur.com/De9SEcG.gif',
+        'http://www.yvelledesigneye.com/wp-content/uploads/2013/01/City-by-Jessica.gif',
+        'http://i.imgur.com/XHga4.gif',
+        'http://i.imgur.com/Ak1PA.gif',
+        'http://i.imgur.com/ywhYuiy.jpg',
+        'http://i.imgur.com/FTIo0K0.gif',
+        'http://i.imgur.com/lS2oDmh.gif',
+        'http://i.imgur.com/Z2o29D0.gif'
+    ];
+    var loadedImages = [];
+
+
+    var mainImage = document.getElementById('main-image');
+
+    var randInt = function(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    };
+
+    var loadRandom = function() {
+        if (images.length <= 0)
+            return;
+
+        var img = new Image();
+        img.addEventListener('load', function() {
+
+            loadedImages.push(this.src);
+            loadRandom();
+        }, false);
+        var index = randInt(0, images.length);
+        img.src = images[index];
+
+        images.splice(index, 1);
+    };
+
+    loadRandom();
+    loadRandom();
+    loadRandom();
+
+
+    var changeScene = function() {
+        if (loadedImages.length > 0) {
+            var imageSource = loadedImages[randInt(0, loadedImages.length)];
+            document.body.style['background-image'] = "url('"+ imageSource + "')";
+        }
+
+        setTimeout(changeScene, randInt(4000, 5000));
+    };
+
+    var changeCenter = function() {
+        if (loadedImages.length > 0) {
+            mainImage.src = loadedImages[randInt(0, loadedImages.length)];
+        }
+        setTimeout(changeCenter, randInt(2000, 3000));
+    };
+
+    changeCenter();
+    changeScene();
+</script>
+
+</html>
