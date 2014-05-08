@@ -14,13 +14,6 @@
       text-shadow: 2px 2px #000000;
     }
 
-    html {
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-
     .btn {
       text-align: center;
       border: none;
@@ -154,7 +147,6 @@
 <body>
   <div class="container">
     <div class="sixteen columns">
-    
       <h1>Secret Stuff</h1>
       <a href="fractals.html" role="button" class="btn btn-1">fractals</a>
       <a href="lazers.html" role="button" class="btn btn-2">lazers</a>
@@ -189,14 +181,20 @@ document.addEventListener("DOMContentLoaded", function main(e) {
     document.getElementById('siren')
   ];
 
-  var html = document.getElementsByTagName('html')[0];
-  if (isMobile) {
-    html.style['background'] = "url('http://subtlepatterns.com/patterns/struckaxiom.png') repeat center center fixed";
-  } else {
-    html.style['background'] = "url('http://i.imgur.com/uOYFkKS.gif') no-repeat center center fixed";
-  }
+  (function(html) {
+    if (isMobile) {
+      html.style['background'] = "url('http://subtlepatterns.com/patterns/struckaxiom.png') repeat center center fixed";
+    } else {
+      html.style['background'] = "url('http://i.imgur.com/uOYFkKS.gif') no-repeat center center fixed";
+
+    }
+    html.style['-webkit-background-size'] = 
+    html.style['-moz-background-size'] = 
+    html.style['-o-background-size'] = 
+    html.style['background-size'] = 'cover';
+  }(document.getElementsByTagName('html')[0]));
   
-// background: url('http://i.imgur.com/uOYFkKS.gif') no-repeat center center fixed;
+
   var elements = document.getElementsByTagName('a');
   for (var i=0; i < elements.length; i++) {
     elements[i].setAttribute('sound-index', i);
