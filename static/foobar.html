@@ -1,91 +1,202 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Ignore this page</title>
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-    <style type="text/css">
-        .container {
-            padding-left: 150px;
-            padding-right: 150px;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Ignore this page</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/1.2/skeleton.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lato:700|Lobster' rel='stylesheet' type='text/css'>
+  <style type="text/css">
+    h1 {
+      color: white;
+      font-family: 'Lobster', cursive;
+      text-shadow: 2px 2px #000000;
+    }
 
-        .rob {
-            width: 50px;
-            height: 50px;
-        }
+    html {
+      background: url('http://i.imgur.com/uOYFkKS.gif') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
 
-        body {
-            overflow:hidden;
-            margin: 0;
-            padding: 0;
-            background-repeat:no-repeat;
-            background-size: cover;
-            background-position:center;
-            background-image: url('http://i.imgur.com/uOYFkKS.gif');
-        }
+    .btn {
+      text-align: center;
+      border: none;
+      font-family: 'Lato', sans-serif;
+      text-shadow: 3px 3px rgba(0,0,0, .2);
+      background: none;
+      cursor: help;
+      padding: 25px 80px;
+      display: block;
+      margin: 20px 0px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      outline: none;
+      position: relative;
+      -webkit-transition: none;
+      -moz-transition: none;
+      transition: none;
+      text-decoration: none;
+      border-radius: 40px;
+    }
 
-        .page-header {
-            color: #FFFFFF;
-        }
+    .btn:hover, .btn:active {
+      text-shadow: 2px 2px rgba(0,0,0,  .2);
+    }
 
-        @media only screen and (max-width: 480px) {
-            .container {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-        }
-    </style>
+    .btn-1 {
+      background: rgba(255,255,255,  .6);
+      color: #fff;
+      box-shadow: 0 6px rgba(0,0,0,  .6);
+    }
+    .btn-1:hover {
+      box-shadow: 0 4px rgba(0,0,0,  .6);
+      top: 2px;
+    }
+    .btn-1:active {
+      box-shadow: 0 0 rgba(0,0,0,  .6);
+      top: 6px;
+    }
+
+    .btn-2 {
+      background: #cb4e4e;
+      color: #fff;
+      box-shadow: 0 6px #ab3c3c;
+    }
+    .btn-2:hover {
+      box-shadow: 0 4px #ab3c3c;
+      top: 2px;
+    }
+    .btn-2:active {
+      box-shadow: 0 0 #ab3c3c;
+      top: 6px;
+    }
+
+
+    .btn-3 {
+      background: #fcad26;
+      color: #fff;
+      box-shadow: 0 6px #f29e0d;
+    }
+    .btn-3:hover {
+      box-shadow: 0 4px #f29e0d;
+      top: 2px;
+    }
+    .btn-3:active {
+      box-shadow: 0 0 #f58500;
+      top: 6px;
+    }
+
+
+    .btn-4 {
+      background: #2ECC71;
+      color: #fff;
+      box-shadow: 0 6px #119e4d;
+    }
+    .btn-4:hover {
+      box-shadow: 0 4px #119e4d;
+      top: 2px;
+    }
+    .btn-4:active {
+      box-shadow: 0 0 #119e4d;
+      top: 6px;
+    }
+
+
+    .btn-5 {
+      background: #4593e3;
+      color: #fff;
+      box-shadow: 0 6px #226fbe;
+    }
+    .btn-5:hover {
+      box-shadow: 0 4px #226fbe;
+      top: 2px;
+    }
+    .btn-5:active {
+      box-shadow: 0 0 #226fbe;
+      top: 6px;
+    }
+
+    .btn-6 {
+      background: #9e54bd;
+      color: #fff;
+      box-shadow: 0 6px #823aa0;
+    }
+    .btn-6:hover {
+      box-shadow: 0 4px #823aa0;
+      top: 2px;
+    }
+    .btn-6:active {
+      box-shadow: 0 0 #823aa0;
+      top: 6px;
+    }
+
+
+    .btn-7 {
+      background: #999999;
+      color: #fff;
+      box-shadow: 0 6px #444444;
+    }
+    .btn-7:hover {
+      box-shadow: 0 4px #444444;
+      top: 2px;
+    }
+    .btn-7:active {
+      box-shadow: 0 0 #444444;
+      top: 6px;
+    }
+
+  </style>
 </head>
-    <body>
-        <audio id="frogs" loop src="media/frogs.mp3"></audio>
-        <audio id="parakeet" loop src="media/parakeet.mp3"></audio>
-        <audio id="rainforest" loop src="media/rainforest.mp3"></audio>
-        <audio id="ambiance" loop src="media/ambiance.mp3"></audio>
-        <audio id="traffic" loop src="media/traffic.mp3"></audio>
-        <audio id="siren" loop src="media/siren.mp3"></audio>
+<body>
+  <div class="container">
+    <div class="sixteen columns">
+    
+      <h1>Secret Stuff</h1>
+      <a href="fractals.html" role="button" class="btn btn-1">fractals</a>
+      <a href="lazers.html" role="button" class="btn btn-2">lazers</a>
+      <a href="rainbow.html" role="button" class="btn btn-3">rainbow</a>
+      <a href="something-cool.html" role="button" class="btn btn-4">something-cool</a>
+      <a href="spots.html" role="button" class="btn btn-5">spots</a>
+      <a href="what.html" role="button" class="btn btn-6">what</a>
+      <a href="http://23.251.149.246/" role="button" class="btn btn-7">?</a>
+    </div>
+  </div>
 
-        <div class="container">
-            <div class="page-header">
-                <h1>Howdy Partner<img class="rob img-rounded pull-right" src="https://graph.facebook.com/robert.sheehy/picture"></h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <a href="lazers.html" role="button" class="btn btn-info btn-lg btn-block">lazers</a>
-                    <a href="rainbow.html" role="button" class="btn btn-info btn-lg btn-block">rainbow</a>
-                    <a href="something-cool.html" role="button" class="btn btn-info btn-lg btn-block">something-cool</a>
-                    <a href="spots.html" role="button" class="btn btn-info btn-lg btn-block">spots</a>
-                    <a href="what.html" role="button" class="btn btn-info btn-lg btn-block">what</a>
-                    <a href="http://23.251.149.246/" role="button" class="btn btn-info btn-lg btn-block">?</a>
-                </div>
-                <img class="wtf" src="">
-            </div>
-        </div>
+  <audio id="frogs" loop src="media/frogs.mp3"></audio>
+  <audio id="parakeet" loop src="media/parakeet.mp3"></audio>
+  <audio id="rainforest" loop src="media/rainforest.mp3"></audio>
+  <audio id="ambiance" loop src="media/ambiance.mp3"></audio>
+  <audio id="traffic" loop src="media/traffic.mp3"></audio>
+  <audio id="siren" loop src="media/siren.mp3"></audio>
 
-       
-    </body>
-    <script>
-        (function main() {
-            var sounds = [
-                document.getElementById('frogs'),
-                document.getElementById('parakeet'),
-                document.getElementById('rainforest'),
-                document.getElementById('ambiance'),
-                document.getElementById('traffic'),
-                document.getElementById('siren')
-            ];
+<script>
+(function main() {
+  var sounds = [
+    document.getElementById('frogs'),
+    document.getElementById('parakeet'),
+    document.getElementById('rainforest'),
+    document.getElementById('ambiance'),
+    document.getElementById('traffic'),
+    document.getElementById('siren')
+  ];
 
-            var elements = document.getElementsByTagName('a');
-            for (var i=0; i < elements.length; i++) {
-                elements[i].setAttribute("sound-index", i);
-                elements[i].addEventListener('mouseenter', function(e) {
-                    sounds[e.target.getAttribute("sound-index")].play();
-                }, false);
-                elements[i].addEventListener('mouseleave', function(e) {
-                    sounds[e.target.getAttribute("sound-index")].pause();
-                }, false);
-            }
-        })();
-    </script>
+  var elements = document.getElementsByTagName('a');
+  for (var i=0; i < elements.length; i++) {
+    elements[i].setAttribute('sound-index', i);
+    elements[i].addEventListener('mouseenter', function(e) {
+        sounds[e.target.getAttribute('sound-index')%sounds.length].play();
+    }, false);
+    elements[i].addEventListener('mouseleave', function(e) {
+        sounds[e.target.getAttribute('sound-index')%sounds.length].pause();
+    }, false);
+  }
+})();
+</script>
 
+</body>
 </html>
