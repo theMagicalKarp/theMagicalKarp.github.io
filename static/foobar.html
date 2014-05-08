@@ -158,6 +158,7 @@
     </div>
   </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js"></script>
 <script>
 var isMobile = (function (browser) {
   return (browser.match(/(Android|BlackBerry|IEMobile|Nokia|iP(ad|hone|od)|Opera M(obi|ini))/) !== null);
@@ -165,7 +166,7 @@ var isMobile = (function (browser) {
 
 
 document.addEventListener("DOMContentLoaded", function main(e) {
-
+  FastClick.attach(document.body);
   (function(body) {
     if (isMobile) { 
       return;
