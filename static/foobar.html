@@ -192,18 +192,18 @@ document.addEventListener("DOMContentLoaded", function main(e) {
     document.getElementById('siren')
   ];
 
-  (function(html) {
+  (function(body) {
     if (isMobile) {
-      html.style['background'] = "url('http://subtlepatterns.com/patterns/struckaxiom.png') repeat center center fixed";
+      body.style['background'] = "url('http://subtlepatterns.com/patterns/struckaxiom.png') repeat center center fixed";
     } else {
-      html.style['background'] = "url('img/bg.gif') no-repeat center center fixed";
-      html.style['-webkit-background-size'] = 
-      html.style['-moz-background-size'] = 
-      html.style['-o-background-size'] = 
-      html.style['background-size'] = 'cover';
+      body.style['background'] = "url('img/bg.gif') no-repeat center center fixed";
+      body.style['-webkit-background-size'] = 'cover';
+      body.style['-moz-background-size'] = 'cover';
+      body.style['-o-background-size'] = 'cover';
+      body.style['background-size'] = 'cover';
     }
 
-  }(document.getElementsByTagName('html')[0]));
+  }(document.getElementsByTagName('body')[0]));
   
 
   var elements = document.getElementsByTagName('a');
