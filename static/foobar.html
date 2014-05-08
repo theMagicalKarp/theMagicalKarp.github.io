@@ -158,13 +158,6 @@
     </div>
   </div>
 
-  <audio id="frogs" loop src="media/frogs.mp3"></audio>
-  <audio id="parakeet" loop src="media/parakeet.mp3"></audio>
-  <audio id="rainforest" loop src="media/rainforest.mp3"></audio>
-  <audio id="ambiance" loop src="media/ambiance.mp3"></audio>
-  <audio id="traffic" loop src="media/traffic.mp3"></audio>
-  <audio id="siren" loop src="media/siren.mp3"></audio>
-
 <script>
 var isMobile = (function (browser) {
   return (browser.match(/(Android|BlackBerry|IEMobile|Nokia|iP(ad|hone|od)|Opera M(obi|ini))/) !== null);
@@ -172,6 +165,24 @@ var isMobile = (function (browser) {
 
 
 document.addEventListener("DOMContentLoaded", function main(e) {
+
+  (function(body) {
+    if (isMobile) { 
+      return;
+    }
+
+    body.innerHTML += [
+      '<audio id="frogs" loop src="media/frogs.mp3"></audio>',
+      '<audio id="parakeet" loop src="media/parakeet.mp3"></audio>',
+      '<audio id="rainforest" loop src="media/rainforest.mp3"></audio>',
+      '<audio id="ambiance" loop src="media/ambiance.mp3"></audio>',
+      '<audio id="traffic" loop src="media/traffic.mp3"></audio>',
+      '<audio id="siren" loop src="media/siren.mp3"></audio>'
+    ].join('');
+
+  }(document.getElementsByTagName('body')[0]));
+  
+
   var sounds = [
     document.getElementById('frogs'),
     document.getElementById('parakeet'),
@@ -205,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function main(e) {
         sounds[e.target.getAttribute('sound-index')%sounds.length].pause();
     }, false);
   }
-});
+}, false);
 </script>
 
 </body>
