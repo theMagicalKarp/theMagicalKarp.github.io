@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <title>Test</title>
+  <style>
+  #art {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    margin: 0px;
+  }
+  </style>
+</head>
+<body>
+<canvas id="art"></canvas>
+<script>
+var animate = (function(func, fps) {
+  var then = new Date().getTime();
+  var interval = 1000.0 / fps;
+  var now, delta;
+
+  window.requestAnimationFrame = (function() {
+    return  window.requestAnimationFrame       || 
+        window.webkitRequestAnimationFrame || 
+        window.mozRequestAnimationFrame    || 
+        window.oRequestAnimationFrame      || 
+        window.msRequestAnimationFrame;
+  })();
+
+  var step = function(time) {
+    window.requestAnimationFrame(step);
+    now = new Date().getTime();
+    delta = now - then;
+
+    if (delta > interval) {
+      then = now - (delta % interval);
+      func(time);
+    }
+  };
+
+  window.requestAnimationFrame(step);
+});
+
+var getRandomInt = (function(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+});
+
+var calculateDistance = (function(x1, y1, x2, y2) {
+  var xd = (x2 - x1) * (x2 - x1);
+  var yd = (y2 - y1) * (y2 - y1);
+  return Math.sqrt(xd + yd);
+});
+
+(function() {
+  var canvas = document.getElementById('art');
+  var ctx = canvas.getContext('2d');
+
+  var n = 25;
+  var tailLen = 30;
+  var detail = 1.25;
+
+  canvas.width = window.innerWidth * detail;
+  canvas.height = window.innerHeight * detail;
+
+  var screenWidth = canvas.width;
+  var screenHeight = canvas.height;
+
+  var mouse = {
+    'x': 0,
+    'y': 0,
+    'oldx': 0,
+    'oldy': 0
+  };
+
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  var dirs = [0.000, 1.047, 2.094, 3.141, 4.188, 5.235];
+
+
+  var colorIndex = 170;
+  var getNewPoint = function() {
+    return {
+      'x': 500,
+      'y': 300,
+      'oldx': 500,
+      'oldy': 300,
+      'color': ['hsla(', colorIndex++, ',90%,50%,1)'].join(''),
+      'draw': function(context) {
+        this.move();
+        context.strokeStyle = this.color;
+        context.beginPath();
+        context.moveTo(this.x, this.y);
+        context.lineTo(this.oldx, this.oldy);
+        context.stroke();
+      },
+      'buildCoord': function(direction) {
+        return {
+          'x': this.x + Math.cos(direction) * 20,
+          'y': this.y + Math.sin(direction) * 20
+        };
+      },
+      'move': function() {
+        var coordinateA = this.buildCoord(dirs[getRandomInt(0, dirs.length-1)]);
+        var distanceA = calculateDistance(coordinateA.x, coordinateA.y, mouse.x, mouse.y);
+
+        var coordinateB = this.buildCoord(dirs[getRandomInt(0, dirs.length-1)]);
+        var distanceB = calculateDistance(coordinateB.x, coordinateB.y, mouse.x, mouse.y);
+
+
+        var dir = (distanceA < distanceB) ? coordinateA: coordinateB;
+
+        this.oldx = this.x;
+        this.oldy = this.y;
+        this.x = dir.x;
+        this.y = dir.y;
+      }
+    };
+  };
+
+  var points = [];
+  for (var i = 0; i < n; i++) {
+    points.push(getNewPoint());
+  }
+
+  var wRatio = (canvas.width / canvas.clientWidth);
+  var hRatio = (canvas.height / canvas.clientHeight);
+  window.onresize = function(e) {
+
+    canvas.width = window.innerWidth * detail;
+    canvas.height = window.innerHeight * detail;
+
+    wRatio = (canvas.width / canvas.clientWidth);
+    hRatio = (canvas.height / canvas.clientHeight);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+
+  var onMouseMove = function(e) {
+    e.preventDefault();
+    mouse.oldx = mouse.x;
+    mouse.oldy = mouse.y;
+
+    if (e.touches && e.touches.length >= 1) {
+      mouse.x = e.touches[0].clientX * wRatio;
+      mouse.y = e.touches[0].clientY * hRatio;
+    } else {
+      mouse.x = e.clientX * wRatio;
+      mouse.y = e.clientY * hRatio;
+    }
+
+  };
+
+  canvas.addEventListener('mousemove', onMouseMove, false);
+  canvas.addEventListener('touchstart', onMouseMove, false);
+  canvas.addEventListener('touchmove', onMouseMove, false);
+
+  animate(function(time) {
+    ctx.lineWidth = '1';
+    ctx.fillStyle='rgba(0,0,0,.015)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    points.forEach(function(point) {
+      point.draw(ctx);
+    });
+
+  }, 60);
+
+
+}());
+</script>
+</body>
+</html>
