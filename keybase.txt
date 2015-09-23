@@ -1,0 +1,78 @@
+==================================================================
+https://keybase.io/rsheehy
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://themagicalkarp.github.io
+  * I am rsheehy (https://keybase.io/rsheehy) on keybase.
+  * I have a public key with fingerprint 6E9F 2472 A5DC 8EFB C2B9  88AC 4AA1 E705 E1AF 8BC1
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.8.20"
+        },
+        "key": {
+            "eldest_kid": "01010646a3d02d0de29c496e1fba11e62da931dc219833c66a7960b8d22fcce6f2f40a",
+            "fingerprint": "6e9f2472a5dc8efbc2b988ac4aa1e705e1af8bc1",
+            "host": "keybase.io",
+            "key_id": "4aa1e705e1af8bc1",
+            "kid": "01010646a3d02d0de29c496e1fba11e62da931dc219833c66a7960b8d22fcce6f2f40a",
+            "uid": "873fe8f54249d5290abd78bdd38f4b19",
+            "username": "rsheehy"
+        },
+        "service": {
+            "hostname": "themagicalkarp.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1442967729,
+    "expire_in": 157680000,
+    "prev": "74ad5d26e16bb13866771f99ef32f272bd975b804409088aeec19772bded676f",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Comment: GPGTools - https://gpgtools.org
+
+owGtkn1QFGUcxw+BJg4VobDLYGTWYnTmPHb39vYFsAHBl6SAZogahY59efZu5dg7
+dvfAgyGjjAIUOVBHS5gYEkIQIhrQEwhiJl4cKbBxarABnBp0wkBmnDRN2iWaqZn+
+7Nl/nnn28/v+vr/v81Sv89fp/fY1zAXOdlQO+l25zegy/RY7iyHGyXmg2GKIdQhA
+VLSdSOcBKBbKBR6GloFJcEaJTg6YDspRq4wRKgCSLDhFlYJNpAmFoRKjxmvVwMEB
+WbHmCpz2F1E/HMNpMwejHMwBlGIxCgcIz9AIAnCUoykzwrEoQpFmM4vjNEHhMENy
+KMqzLMB5lMdgWm3IC6INSC5J0CxCOKB4FCNQ2sKxJOAZFmUokqRZjKYRQMAWgNA8
+ybCIWmh3ysq/hoFWnFpX7P0H/z/7dq/IkYSZByRvwVCM4iwoBdMMR5AMx5lJHmMQ
+SgNlIK0GL8l2AOweLVP1sEBggZarNsgqoNhBHm0TWNqRS0suk01Q7G7mr9FcklNx
+sk6HStkVxSXHaiqKx6WVFQLGuipoZYRGkVMz/eddIirKKoLWAsEwlMIJAqWMEDjk
+EiRgFTTCQuAkrC6tEShQNQmM5iwcqiaDMwxiJnG1COEpCvBmlEcJlOEowsKQMIbB
+FKxeEQAsQhHaOeBwAuchbcZ80QnFYqpP2qZKyoJNpBW3BKCS8jURATo/ve6JwDXa
+Y9Xpgzb8/YIvXg5ZpjdWVb/ya0ZTx1PTnXcfhZsHx2sXZ1o+XeqemdlS5Mjw1ItT
+j63WkNA7DckVyc8WHRhOTbxoftjxMOF8UOOZzyYjh0OykyXdwnTM09b+o4o0uz9+
+bWnAwSGfWJmXERoW3Czskm8aLux+Mf17SNkamnp54P3YpuqBxiE5aTp8oak27YNv
+p/aP9pyqshYmjJek1wX196X/ln//LFmcePSX8/aa7B29k+3RxVe7vCkVQwFJjudy
+to9+Im5vWZoOSDv5oP3I253Z7m8MbZU3fA5nas/Z1jJ95eZ7jitGY+RXMZNzOz9a
+nngy/g34eumO72qQeunaq5u4jj0XpiqRP9KiLT2bsub8x3+frQv/3No9BrNjXtts
+/GiUwfhe/pv5XFhJRFxr6YmgvscvlHmHf7zr++lQju94MHMqet/pnq4K7/ERX9I5
+uGvel9X+fMr1wqtxl9r0VaOt55a7Y4xDYkv24fiPN2+tmS+zfuHL2rPU8HPJM733
+5bXzY2/dKM+M/OHWKGO62RYYcStssvO07MTrJr58Z+fCrhMpzQ+8lz70HtnWlxpn
+6J3IaX2Nrdu9jmgE9wr1KV3rxWPljyyOxZd8aL174Ott4+/2JvX4JYRt8L+2d/Jw
+U1JF6IhHn5nWP1haizc79nKFhp7mjeJ65fVxAxK85cwdk9tOBha/XJQYN3Kg0/9k
++rHbGX8C
+=cwdp
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rsheehy
+
+==================================================================
